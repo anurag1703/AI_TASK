@@ -32,22 +32,18 @@ This project is a **Retrieval-Augmented Generation (RAG)** chatbot built using:
 └── README.md 
 
 ## Future Enhancements
-Multi-PDF document support
+-Multi-PDF document support
 
-Persistent FAISS vector store
+-Persistent FAISS vector store
 
-Chat history or threaded UI
+-Chat history or threaded UI
 
-Authentication and user tracking
+-Authentication and user tracking
 
-Export Q&A session as PDF
+-Export Q&A session as PDF
 
-
-## 🧾 License
-This project is MIT licensed.
-You're free to fork, use, and modify for your own work.
 
 ## 🔗 Deployment & Demo
-📂 GitHub Repository: [Insert your repo link here]
+📂 GitHub Repository: https://github.com/anurag1703/AI_TASK
 
-🌐 Streamlit App: [Insert your Streamlit Cloud deployment link here]
+🌐 Streamlit App: https://aitask-rag-chatbot.streamlit.app/
