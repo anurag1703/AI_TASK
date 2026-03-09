@@ -7,9 +7,10 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.chains import create_retrieval_chain
+from langchain.chains.retrieval import create_retrieval_chain
+from langchain_text_splitters import SentenceTransformersTokenTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.text_splitter import SentenceTransformersTokenTextSplitter
+
 
 # Set HuggingFace token from Streamlit secrets
 os.environ["HF_TOKEN"] = st.secrets["HF_TOKEN"]
@@ -125,4 +126,5 @@ if groq_key:
         st.error(f"❌ Error initializing chatbot: {err}")
 else:
     st.info("🔐 Please enter your Groq API key in the sidebar to start.")
+
 
