@@ -47,7 +47,7 @@ with st.sidebar:
     groq_key = st.text_input("Enter your Groq API Key", type="password")
 
     st.subheader("ℹ️ System Info")
-    st.write("Model: `LLaMA3-8B` via Groq")
+    st.write("Model: `openai/gpt-oss-20b` via Groq")
     st.write(f"Embedding Model: `{embedding_model_name}`")
     
     if "chunks" in st.session_state:
@@ -101,7 +101,7 @@ def stream_response(response_iterator):
 if groq_key:
     os.environ["GROQ_API_KEY"] = groq_key
     llm = ChatGroq(
-        model="Llama3-8b-8192",
+        model="openai/gpt-oss-20b",
         temperature=0,
         streaming=True
     )
@@ -133,3 +133,4 @@ if groq_key:
         st.warning("📥 Please upload and embed a document first.")
 else:
     st.info("🔐 Please enter your Groq API key in the sidebar to start.")
+
