@@ -2,14 +2,18 @@ import os
 import time
 import streamlit as st
 import tempfile
-from langchain_groq.chat_models import ChatGroq
+
+from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_huggingface import HuggingFaceEmbeddings
+
 from langchain_core.prompts import ChatPromptTemplate
+
 from langchain.chains.retrieval import create_retrieval_chain
-from langchain_text_splitters import SentenceTransformersTokenTextSplitter
 from langchain.chains.combine_documents import create_stuff_documents_chain
+
+from langchain_text_splitters import SentenceTransformersTokenTextSplitter
 
 
 # Set HuggingFace token from Streamlit secrets
@@ -95,8 +99,12 @@ def stream_response(response):
 if groq_key:
     try:
         os.environ["GROQ_API_KEY"] = groq_key
-        llm = ChatGroq(groq_api_key=groq_key, model_name="Llama3-8b-8192", streaming=True)
-        llm.model_rebuild()
+        llm = ChatGroq(
+            model="Llama3-8b-8192",
+            temperature=0,
+            streaming=True,
+            groq_api_key=groq_key
+        )
 
         if st.button("📥 Load and Embed Uploaded Document"):
             prepare_vector_db_from_file(uploaded_file)
@@ -126,5 +134,6 @@ if groq_key:
         st.error(f"❌ Error initializing chatbot: {err}")
 else:
     st.info("🔐 Please enter your Groq API key in the sidebar to start.")
+
 
 
